@@ -1,6 +1,7 @@
 import React, { useEffect} from 'react';
 import { useState } from 'react'
 import axios from 'axios';
+import Card from './Card';
 
 const Countries = () => {
     const [data,setData] = useState([]);
@@ -13,6 +14,7 @@ const Countries = () => {
         })
         .catch(error => {
             console.error(error)
+            // Toujours Use le .catch pour affiché l'erreur avec le .then !!!!! 
         })
 
       
@@ -24,7 +26,8 @@ const Countries = () => {
         <div className="countries">
             <ul className ="countries-list">
                {data.map((country) => (
-                   <li key={country.name.common}>{country.name.common} </li>
+                //    <li key={country.name.common}>{country.name.common} </li>
+                <Card country ={country} key={country.name}/>
         ))} 
             </ul>
         </div>
